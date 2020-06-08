@@ -11,4 +11,8 @@ pillow
 polls
 markdown
 django-filter
+<<<<<<< HEAD
 matplotlib
+=======
+matplotlib
+>>>>>>> cbc930443ef01ab4effe9ca0d4910f403d1e00d1
