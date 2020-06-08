@@ -1,0 +1,59 @@
+{% extends 'headerPage.html' %}
+
+{% block content%}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Red Neuronal</h1>
+        <p class="lead">Cargue desde su PC para predecir si es: Avión, Automóvil, Gato, Perro, Flores, Frutas, Motocicleta, Persona.</p>
+    </div>
+</div>
+<div class="container">
+<div class="alert alert-warning" role="alert">
+    Asegúrate de haber cargado una imagen antes de continuar.
+</div>
+
+    <div class="row">
+      <div class="col-4">
+        <h3>Contenido</h3>
+        <br>
+            <ul class="list-group">
+                <a href="" class="list-group-item list-group-item-action active">Home</a>
+                <a href="viewDataBase" class="list-group-item list-group-item-action">Galería</a>
+                <a href="https://www.kaggle.com/prasunroy/natural-images" class="list-group-item list-group-item-action">Más información del DataSet</a>
+            </ul>
+      </div>
+      <div class="col-6">
+        <label>Busca con tus imágenes</label>
+            <form method="post" enctype="multipart/form-data" action="predictImage"> {% csrf_token %}
+                <div class="form-group">
+                    <br>
+                    <label for="exampleFormControlFile1">Carga una imágen</label>
+                    <input type="file" name="filePath" class="btn btn-light" id="exampleFormControlFile1"> 
+                    <button type="submit" value="Submit" class="btn btn-primary">Subir</button>
+                </div>              
+            </form>
+            <div class="card" style="width: 22rem;">
+                <div class="card-body">
+                    <div class="card-header">
+                        <img class="rounded mx-auto d-block" src={{filePathName}} alt='imagename' width="250px" height="250px">
+                    </div>
+                    <h3 class="card-title">Resultado</h3>
+                    <div class="alert alert-light" role="alert">
+                        La imágen muestra:
+                    </div>
+                    <div class="alert alert-secondary" role="alert">
+                        <strong>{{predictedLabel}}</strong>
+                    </div>
+                    <div class="alert alert-light" role="alert">
+                        Con una probabilidad de: 
+                    </div>
+                    <div class="alert alert-secondary" role="alert">
+                        <strong> %</strong>
+                    </div>
+                </div>
+            </div>
+        </div>       
+    </div>  
+</div>
+
+{% endblock %}
